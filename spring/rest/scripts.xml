@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dspaceRunnableThreadExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+    </bean>
+
+    <!-- This primary attribute is present so that we can assure that in the REST layer we'll always use this
+        bean if it is present-->
+    <bean id="import-openaire-events" class="org.dspace.qaevent.script.OpenaireEventsImportScriptConfiguration" primary="true">
+        <property name="description" value="Import new openaire quality assurance broker events"/>
+        <property name="dspaceRunnableClass" value="org.dspace.qaevent.script.OpenaireEventsImport"/>
+     </bean>
+
+    <bean id="metadata-import" class="org.dspace.app.bulkedit.MetadataImportScriptConfiguration" primary="true">
+        <property name="description" value="Import metadata after batch editing" />
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.MetadataImport"/>
+    </bean>
+
+    <bean id="metadata-export" class="org.dspace.app.bulkedit.MetadataExportScriptConfiguration" primary="true">
+        <property name="description" value="Export metadata for batch editing"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.MetadataExport"/>
+    </bean>
+
+    <bean id="curate" class="org.dspace.curate.CurationScriptConfiguration">
+        <property name="description" value="Curation tasks"/>
+        <property name="dspaceRunnableClass" value="org.dspace.curate.Curation"/>
+    </bean>
+
+    <!-- Not runnable from REST -->
+    <bean id="submission-forms-migrate" class="org.dspace.submit.migration.SubmissionFormsMigrationScriptConfiguration">
+        <property name="description" value="Script for migrating submission forms to DSpace 7"/>
+        <property name="dspaceRunnableClass" value="org.dspace.submit.migration.SubmissionFormsMigration"/>
+    </bean>
+    
+    <bean id="metadata-deletion" class="org.dspace.app.bulkedit.MetadataDeletionScriptConfiguration" primary="true">
+        <property name="description" value="Delete all the values of the specified metadata field"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.MetadataDeletion"/>
+    </bean>
+
+    <bean id="process-cleaner" class="org.dspace.administer.ProcessCleanerConfiguration" primary="true">
+        <property name="description" value="Cleanup all the old processes in the specified state"/>
+        <property name="dspaceRunnableClass" value="org.dspace.administer.ProcessCleaner"/>
+    </bean>
+
+    <bean id="bulk-import" class="org.dspace.app.bulkedit.BulkImportScriptConfiguration" primary="true">
+        <property name="description" value="Perform the bulk import of an excel file with a list of item to add, update or remove"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.BulkImport"/>
+    </bean>
+
+    <bean id="item-export" class="org.dspace.content.integration.crosswalks.script.ItemExportScriptConfiguration" primary="true">
+        <property name="description" value="Perform the item export in the given format"/>
+        <property name="dspaceRunnableClass" value="org.dspace.content.integration.crosswalks.script.ItemExport"/>
+    </bean>
+
+    <bean id="bulk-item-export" class="org.dspace.content.integration.crosswalks.script.BulkItemExportScriptConfiguration" primary="true">
+        <property name="description" value="Perform the multiple items export in the given format"/>
+        <property name="dspaceRunnableClass" value="org.dspace.content.integration.crosswalks.script.BulkItemExport"/>
+    </bean>
+
+    <bean id="collection-export" class="org.dspace.app.bulkedit.CollectionExportScriptConfiguration" primary="true">
+        <property name="description" value="Perform the export of all the archived items of the given collection in xls format"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.CollectionExport"/>
+    </bean>
+
+    <bean id="import-openaire-suggestions" class="org.dspace.app.suggestion.openaire.PublicationLoaderScriptConfiguration">
+        <property name="description" value="Imports suggestions from OpenAIRE for publication claim"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.suggestion.openaire.PublicationLoaderRunnable"/>
+    </bean>
+
+    <bean id="orcid-bulk-push" class="org.dspace.orcid.script.OrcidBulkPushScriptConfiguration" primary="true">
+        <property name="description" value="Perform the bulk synchronization of all the BATCH configured ORCID entities placed in the ORCID queue"/>
+        <property name="dspaceRunnableClass" value="org.dspace.orcid.script.OrcidBulkPush"/>
+    </bean>
+    
+    <bean id="orcid-bulk-pull" class="org.dspace.orcid.script.OrcidBulkPullScriptConfiguration" primary="true">
+        <property name="description" value="Perform a bulk pull from the ORCID registry for all the profiles with an ORCID id set"/>
+        <property name="dspaceRunnableClass" value="org.dspace.orcid.script.OrcidBulkPull"/>
+    </bean>
+
+    <bean id="harvest" class="org.dspace.app.harvest.HarvestScriptConfiguration">
+        <property name="description" value="Manage the OAI-PMH harvesting of external collections"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.harvest.Harvest"/>
+    </bean>
+
+    <bean id="cris-layout-tool" class="org.dspace.layout.script.CrisLayoutToolScriptConfiguration" primary="true">
+        <property name="description" value="Script to import CRIS layout configuration from excel file"/>
+        <property name="dspaceRunnableClass" value="org.dspace.layout.script.CrisLayoutToolScript"/>
+    </bean>
+
+    <bean id="export-cris-layout-tool" class="org.dspace.layout.script.ExportCrisLayoutToolScriptConfiguration" primary="true">
+        <property name="description" value="Script to export CRIS layout configuration into excel file"/>
+        <property name="dspaceRunnableClass" value="org.dspace.layout.script.ExportCrisLayoutToolScript"/>
+    </bean>
+
+    <bean name="metadata-export-search" class="org.dspace.app.bulkedit.MetadataExportSearchScriptConfiguration">
+        <property name="description" value="export metadata from a discovery search" />
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkedit.MetadataExportSearch" />
+    </bean>
+
+    <bean id="import" class="org.dspace.app.itemimport.ItemImportScriptConfiguration" primary="true">
+        <property name="description" value="Batch Import from Simple Archive Format (SAF)" />
+        <property name="dspaceRunnableClass" value="org.dspace.app.itemimport.ItemImport"/>
+    </bean>
+
+    <bean id="export" class="org.dspace.app.itemexport.ItemExportScriptConfiguration" primary="true">
+        <property name="description" value="Batch Export to Simple Archive Format (SAF)"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.itemexport.ItemExport"/>
+    </bean>
+
+    <bean id="bulk-access-control" class="org.dspace.app.bulkaccesscontrol.BulkAccessControlScriptConfiguration" primary="true">
+        <property name="description" value="Bulk access control"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkaccesscontrol.BulkAccessControl"/>
+    </bean>
+
+    <bean id="export-schema" class="org.dspace.app.metadata.export.MetadataSchemaExportScriptConfiguration" primary="true">
+        <property name="description" value="Exports a given schema into a registry xml-format file"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.metadata.export.MetadataSchemaExportScript"/>
+    </bean>
+
+    <bean id="filter-media" class="org.dspace.app.mediafilter.MediaFilterScriptConfiguration">
+        <property name="description" value="Perform the media filtering to extract full text from documents and to create thumbnails"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.mediafilter.MediaFilterScript"/>
+    </bean>
+
+</beans>

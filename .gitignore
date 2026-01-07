@@ -1,0 +1,7 @@
+# Backups/temporales
+*.bak.*
+*~
+*.swp
+
+# Opcional: no subir local.cfg si tiene secretos
+# local.cfg

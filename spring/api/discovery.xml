@@ -181,7 +181,7 @@
                 <!-- Person Related items -->
                 <entry key="RELATION.Person.projects" value-ref="relationInvestigatorProjectsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputs" value-ref="relationAuthorResearchOutputsConfiguration"/>
-                <entry key="RELATION.Person.products" value-ref="relationAuthorProductsConfiguration"/>
+                <entry key="RELATION.Person.researchoutputsProduct" value-ref="relationAuthorProductsConfiguration"/>
                 <!-- OrgUnit Related items -->
                 <entry key="RELATION.OrgUnit.rpprojects" value-ref="relationOrgunitRPProjectConfiguration"/>
                 <entry key="RELATION.OrgUnit.publications" value-ref="relationOrgunitPublicationsConfiguration"/>

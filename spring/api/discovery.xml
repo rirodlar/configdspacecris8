@@ -181,6 +181,7 @@
                 <!-- Person Related items -->
                 <entry key="RELATION.Person.projects" value-ref="relationInvestigatorProjectsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputs" value-ref="relationAuthorResearchOutputsConfiguration"/>
+                <entry key="RELATION.Person.products" value-ref="relationAuthorProductsConfiguration"/>
                 <!-- OrgUnit Related items -->
                 <entry key="RELATION.OrgUnit.rpprojects" value-ref="relationOrgunitRPProjectConfiguration"/>
                 <entry key="RELATION.OrgUnit.publications" value-ref="relationOrgunitPublicationsConfiguration"/>
@@ -1378,6 +1379,76 @@
             <list>
                 <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of item)-->
                 <value>author_authority:{0} AND search.resourcetype:Item</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
+        <!--Default result per page  -->
+        <property name="defaultRpp" value="10" />
+        <property name="hitHighlightingConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                <property name="metadataFields">
+                    <list>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dspace.entity.type"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- products of an author -->
+    <bean id="relationAuthorProductsConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <!--Which sidebar facets are to be displayed-->
+        <property name="sidebarFacets">
+            <list>
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterEditor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterFunding" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <!-- Set TagCloud configuration per discovery configuration -->
+        <property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
+        <!--The search filters which can be used on the discovery search page-->
+        <property name="searchFilters">
+            <list>
+                <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterEditor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterFunding" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <!--The sort filters for the discovery search-->
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <!--<property name="defaultSort" ref="sortDateIssued"/>-->
+                <!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByResearchOutputsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <!--Any default filter queries, these filter queries will be used for all
+                queries done by discovery for this configuration -->
+        <property name="defaultFilterQueries">
+            <list>
+                <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of item)-->
+                <value>author_authority:{0} AND search.resourcetype:Item</value>
+                <value>dspace.entity.type:Product</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>

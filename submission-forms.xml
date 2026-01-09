@@ -956,21 +956,32 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-element>contributor</dc-element>
           <dc-qualifier>author</dc-qualifier>
           <label>Authors</label>
-          <input-type>group</input-type>
           <repeatable>true</repeatable>
-          <required />
+          <input-type>group</input-type>
           <hint>Enter the names of the authors of this item.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>relation</dc-schema>
+          <dc-element>isPersonOfProduct</dc-element>
+          <repeatable>true</repeatable>
+          <label>Related Person</label>
+          <input-type>onebox</input-type>
+          <hint>Link to the person(s) related to this product.</hint>
+          <required />
         </field>
       </row>
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>type</dc-element>
+          <repeatable>false</repeatable>
           <label>Type</label>
           <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
           <hint>Nothing to do here. Note for administrators, this metadata could be completely hide using template item</hint>
+          <required />
           <vocabulary>product-coar-types</vocabulary>
         </field>
       </row>

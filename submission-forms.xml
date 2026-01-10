@@ -956,32 +956,21 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-element>contributor</dc-element>
           <dc-qualifier>author</dc-qualifier>
           <label>Authors</label>
-          <repeatable>true</repeatable>
           <input-type>group</input-type>
-          <hint>Enter the names of the authors of this item.</hint>
-          <required />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>relation</dc-schema>
-          <dc-element>isPersonOfProduct</dc-element>
           <repeatable>true</repeatable>
-          <label>Related Person</label>
-          <input-type>onebox</input-type>
-          <hint>Link to the person(s) related to this product.</hint>
           <required />
+          <hint>Enter the names of the authors of this item.</hint>
         </field>
       </row>
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>type</dc-element>
-          <repeatable>false</repeatable>
           <label>Type</label>
           <input-type>onebox</input-type>
-          <hint>Nothing to do here. Note for administrators, this metadata could be completely hide using template item</hint>
+          <repeatable>false</repeatable>
           <required />
+          <hint>Nothing to do here. Note for administrators, this metadata could be completely hide using template item</hint>
           <vocabulary>product-coar-types</vocabulary>
         </field>
       </row>
@@ -1459,6 +1448,55 @@ it, please enter the types and the actual numbers or codes.</hint>
           <hint />
         </field>
       </row>
+
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>planta</dc-element>
+          <label>Planta</label>
+          <input-type>onebox</input-type>
+          <hint/>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>jerarquia</dc-element>
+          <label>Jerarquia</label>
+          <input-type>onebox</input-type>
+          <hint/>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>grado</dc-element>
+          <label>Grado</label>
+          <input-type>onebox</input-type>
+          <hint/>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>jornada</dc-element>
+          <label>Jornada</label>
+          <input-type>onebox</input-type>
+          <hint/>
+        </field>
+      </row>
+
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>researchLine</dc-element>
+          <label>Linea de Investigación</label>
+          <input-type>tag</input-type>
+          <repeatable>true</repeatable>
+          <hint/>
+        </field>
+      </row>
+
       <row>
         <field>
           <dc-schema>person</dc-schema>

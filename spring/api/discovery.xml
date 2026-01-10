@@ -191,6 +191,10 @@
                 <entry key="RELATION.OrgUnit.people" value-ref="relationOrgunitPersonsConfiguration"/>
                 <entry key="RELATION.OrgUnit.projects" value-ref="relationOrgunitProjectsConfiguration"/>
                 <entry key="RELATION.OrgUnit.organizations" value-ref="relationOrgunitOrgunitsConfiguration"/>
+
+                <entry key="RELATION.OrgUnit.rppatentsonly" value-ref="relationOrgunitRPPatentsOnlyConfiguration"/>
+
+
                 <!-- Project Related items -->
                 <entry key="RELATION.Project.projects" value-ref="relationProjectProjectsConfiguration"/>
                 <entry key="RELATION.Project.fundings" value-ref="relationProjectFundingsConfiguration"/>
@@ -1668,6 +1672,30 @@
             <list>
                 <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of item)-->
                 <value>involvedorganisation_authority:{0}</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- patents authored by people affiliated to an orgunit (solo Patentes) -->
+    <bean id="relationOrgunitRPPatentsOnlyConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByRPPublicationsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultFilterQueries">
+            <list>
+                <!-- Vincular por afiliación del OrgUnit -->
+                <value>'{'!join from=search.resourceid to=author_authority fromIndex=${solr.multicorePrefix}search'}'person.affiliation.name_authority:{0}</value>
+                <!-- Restringir el resultado (ítems destino) a Patents -->
+                <value>entityType_keyword:Patent</value>
+                <!-- Estado de visibilidad en el índice destino -->
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>

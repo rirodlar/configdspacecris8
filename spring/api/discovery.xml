@@ -193,6 +193,7 @@
                 <entry key="RELATION.OrgUnit.organizations" value-ref="relationOrgunitOrgunitsConfiguration"/>
 
                 <entry key="RELATION.OrgUnit.rppatentsonly" value-ref="relationOrgunitRPPatentsOnlyConfiguration"/>
+                <entry key="RELATION.OrgUnit.divulgacionCientifica" value-ref="relationOrgunitRPPublicationsDivulgacionCientificaConfiguration"/>
 
 
                 <!-- Project Related items -->
@@ -1696,6 +1697,39 @@
                 <!-- Restringir el resultado (ítems destino) a Patents -->
                 <value>entityType_keyword:Patent</value>
                 <!-- Estado de visibilidad en el índice destino -->
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="relationOrgunitRPPublicationsDivulgacionCientificaConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <!--The sort filters for the discovery search-->
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <!--<property name="defaultSort" ref="sortDateIssued"/>-->
+                <!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByRPPublicationsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <!--Any default filter queries, these filter queries will be used for all
+                queries done by discovery for this configuration -->
+        <property name="defaultFilterQueries">
+            <list>
+                <!-- Vincular productos según afiliación -->
+                <value>'{'!join from=search.resourceid to=author_authority fromIndex=${solr.multicorePrefix}search'}'person.affiliation.name_authority:{0}</value>
+
+                <!-- Limitar a tipo Product -->
+                <!--                <value>entityType_keyword:Product</value>-->
+
+                <!--                &lt;!&ndash; Solo la colección específica &ndash;&gt;-->
+                <value>location.coll:d5f1799e-0227-42bb-a747-7c93df9ee18b</value>
+
+                <!-- Excluir ítems retirados o no visibles -->
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>

@@ -1732,8 +1732,8 @@
                 <!-- Solo entidades Project -->
                 <value>entityType_keyword:Project</value>
 
-                <!-- Solo la colección "Proyectos externos" -->
-                <value>location.coll:fda0fcd2-fcb4-4873-9253-8ca9e0e05649</value>
+                <!-- Solo la colección "Proyectos Interno" -->
+                <value>location.coll:f3c9eed5-d26a-45d4-8e20-a7829e7a7f6b</value>
 
                 <!-- Excluir retirados y no descubribles -->
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -1769,7 +1769,7 @@
                 <value>entityType_keyword:Project</value>
 
                 <!-- Solo la colección "Proyectos externos" -->
-                <value>location.coll:cbfec912-e10c-451e-aeaa-93352788e764</value>
+                <value>location.coll:38ed1b32-8afe-452a-8150-8a77ae3d5081</value>
 
                 <!-- Excluir retirados y no descubribles -->
                 <value>-withdrawn:true AND -discoverable:false</value>

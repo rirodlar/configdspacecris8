@@ -2106,6 +2106,35 @@ it, please enter the types and the actual numbers or codes.</hint>
         </field>
       </row>
     </form>
+
+    <form name="project-dc-contributor-author">
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>author</dc-qualifier>
+          <label>Autor</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required>Debe ingresar al menos un autor.</required>
+          <hint>Ingrese el nombre del autor en el formato Apellido, Nombre [ej. García, Juan o García, J].</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>oairecerif</dc-schema>
+          <dc-element>author</dc-element>
+          <dc-qualifier>affiliation</dc-qualifier>
+          <label>Afiliación</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required />
+          <hint>Ingrese la afiliación del autor según consta en la publicación.</hint>
+        </field>
+      </row>
+    </form>
+
+
     <form name="funding">
       <row>
         <field>

@@ -1875,6 +1875,20 @@ it, please enter the types and the actual numbers or codes.</hint>
           <hint />
         </field>
       </row>
+
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>author</dc-qualifier>
+          <label>Creador</label>
+          <input-type>group</input-type>
+          <repeatable>true</repeatable>
+          <hint>Ingresar el nombre de las personas autoras de este ítem.</hint>
+        </field>
+      </row>
+
+
       <row>
         <field>
           <dc-schema>oairecerif</dc-schema>
@@ -1886,6 +1900,8 @@ it, please enter the types and the actual numbers or codes.</hint>
           <hint />
         </field>
       </row>
+
+
       <row>
         <field>
           <dc-schema>crispj</dc-schema>

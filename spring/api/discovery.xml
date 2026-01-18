@@ -186,6 +186,7 @@
 
 
                 <entry key="RELATION.Person.pproyectInterno" value-ref="relationPersonProjectsIntConfiguration"/>
+                <entry key="RELATION.Person.pproyectExterno" value-ref="relationPersonProjectsExtConfiguration"/>
 
 
                 <!-- OrgUnit Related items -->
@@ -1503,6 +1504,46 @@
                 <value>-withdrawn:true AND -discoverable:false</value>
                 <!--Filter by specific collection-->
                 <value>location.coll:f3c9eed5-d26a-45d4-8e20-a7829e7a7f6b</value>
+            </list>
+        </property>
+        <!--Default result per page  -->
+        <property name="defaultRpp" value="10" />
+        <property name="hitHighlightingConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                <property name="metadataFields">
+                    <list>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dspace.entity.type"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="relationPersonProjectsExtConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <!--The sort filters for the discovery search-->
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <!--DefaultSortOrder can either be desc or asc (desc is default)-->
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByProjectsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <!--Any default filter queries, these filter queries will be used for all
+                queries done by discovery for this configuration -->
+        <property name="defaultFilterQueries">
+            <list>
+                <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of Person)-->
+                <value>projectinvestigators_authority:{0} AND search.resourcetype:Item</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+                <!--Filter by specific collection-->
+                <value>location.coll:38ed1b32-8afe-452a-8150-8a77ae3d5081</value>
             </list>
         </property>
         <!--Default result per page  -->

@@ -185,7 +185,7 @@
                 <entry key="RELATION.Person.researchoutputsPatent" value-ref="relationAuthorResearchOutputsConfigurationPatent"/>
 
 
-                <entry key="RELATION.Person.projectsInt" value-ref="relationPersonProjectsIntConfiguration"/>
+                <entry key="RELATION.Person.pproyectInterno" value-ref="relationPersonProjectsIntConfiguration"/>
 
 
                 <!-- OrgUnit Related items -->

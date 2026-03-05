@@ -13,7 +13,17 @@
   <!-- for handle "default". -->
   <submission-map>
     <!-- Default submission process -->
-    <name-map collection-handle="default" submission-name="publication"/>
+    <!--    <name-map collection-handle="default" submission-name="publication"/>-->
+
+    <name-map collection-entity-type="Publication" submission-name="Publication"/>
+    <name-map collection-entity-type="Person" submission-name="Person"/>
+    <name-map collection-entity-type="Project" submission-name="Project"/>
+    <name-map collection-entity-type="OrgUnit" submission-name="OrgUnit"/>
+    <name-map collection-entity-type="Journal"       submission-name="Journal"/>
+    <name-map collection-entity-type="JournalVolume" submission-name="JournalVolume"/>
+    <name-map collection-entity-type="JournalIssue"  submission-name="JournalIssue"/>
+    <name-map collection-entity-type="Job"           submission-name="Job"/>
+    <name-map collection-entity-type="Tesis"         submission-name="Tesis"/>
 
     <!-- Sample Entities Collection configuration based on the demo Entities dataset available at:
          https://github.com/DSpace-Labs/AIP-Files/releases/tag/demo-entities-data
@@ -27,25 +37,6 @@
             "Journal Issue" Collection = "Compound Journals" ->  "Journal Issues"
          If you are using that demo dataset, you can simply uncomment the below configuration to enable Entity
          submission into all of the above Collections.
-    -->
-    <!-- These configurations enable default submission forms per Entity type
-
-        The  collection-entity-type will be the entity-type attribute associated with a collection,
-        typically the entity name that is associated with a collection if any created or loaded
-        (that is usually specified in relationship-types.xml).
-        - - - - - -
-        PLEASE NOTICE THAT YOU WILL HAVE TO RESTART DSPACE
-        - - - - - -
-    -->
-    <!--
-    <name-map collection-entity-type="Publication" submission-name="Publication"/>
-    -->
-    <!-- Example of configuration using a community handle to map an Item Submission Process.
-
-    This configuration maps the submission process to the community's descendant
-    collections that do not have a mapping defined by collection-handle or entity-type
-
-    <name-map community-handle="123456789/1234" submission-name="xxxx"/>
     -->
   </submission-map>
 
@@ -88,11 +79,13 @@
       <processing-class>org.dspace.app.rest.submit.step.LicenseStep</processing-class>
       <type>license</type>
     </step-definition>
+
     <step-definition id="product" mandatory="true">
       <heading>submit.progressbar.describe.product</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
+
     <step-definition id="product_indexing" mandatory="true">
       <heading>submit.progressbar.describe.product_indexing</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -103,6 +96,21 @@
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
+
+    <step-definition id="jobstep" mandatory="true">
+      <heading>submit.progressbar.describe.jobStep</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+
+    <!-- Step para Tesis -->
+    <step-definition id="tesisstep" mandatory="true">
+      <heading>submit.progressbar.describe.tesisStep</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+
+
     <step-definition id="orgunit" mandatory="true">
       <heading>submit.progressbar.describe.orgunit</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -138,16 +146,16 @@
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
-    <step-definition id="publication_indexing" mandatory="false">
-      <heading>submit.progressbar.describe.publication_indexing</heading>
+    <step-definition id="publication_complementary" mandatory="true">
+      <heading>submit.progressbar.describe.publication_complementary</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
-    <step-definition id="publication_bibliographic_details" mandatory="true">
-      <heading>submit.progressbar.describe.publication_bibliographic_details</heading>
-      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
-      <type>submission-form</type>
-    </step-definition>
+    <!--    <step-definition id="publication_bibliographic_details" mandatory="true">-->
+    <!--      <heading>submit.progressbar.describe.publication_bibliographic_details</heading>-->
+    <!--      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>-->
+    <!--      <type>submission-form</type>-->
+    <!--    </step-definition>-->
     <step-definition id="publication_references" mandatory="false">
       <heading>submit.progressbar.describe.publication_references</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -225,15 +233,14 @@
       <processing-class>org.dspace.app.rest.submit.step.ShowIdentifiersStep</processing-class>
       <type>identifiers</type>
     </step-definition>
-    <step-definition id="coarnotify">
-        <heading>submit.progressbar.coarnotify</heading>
-        <processing-class>org.dspace.app.rest.submit.step.NotifyStep</processing-class>
-        <type>coarnotify</type>
-    </step-definition>
+
   </step-definitions>
+
+
   <submission-definitions>
     <submission-process name="product">
       <step id="collection" />
+      <step id="extractionstep" />
       <step id="product" />
       <step id="product_indexing" />
       <step id="product_references" />
@@ -242,7 +249,7 @@
       <step id="upload" />
       <step id="cclicense" />
       <step id="identifiers" />
-      <step id="license" />
+      <!--      <step id="license" /> -->
     </submission-process>
     <submission-process name="product-edit">
       <step id="product" />
@@ -256,8 +263,9 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!--     <step id="license" /> -->
     </submission-process>
+
     <submission-process name="orgunit-edit">
       <step id="orgunit" />
       <step id="upload" />
@@ -268,7 +276,7 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!--   <step id="license" /> -->
     </submission-process>
     <submission-process name="project-edit">
       <step id="project" />
@@ -280,31 +288,30 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!-- <step id="license" /> -->
     </submission-process>
     <submission-process name="journal-edit">
       <step id="journal" />
       <step id="upload" />
     </submission-process>
+
     <submission-process name="publication">
       <step id="collection" />
       <step id="extractionstep" />
       <step id="publication" />
-      <step id="publication_indexing" />
-      <step id="publication_bibliographic_details" />
+      <step id="publication_complementary" />
+      <!--      <step id="publication_bibliographic_details" />-->
       <step id="publication_references" />
-      <!--Step will be COAR Notify services to the item -->
-      <!-- <step id="coarnotify"/> -->
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!-- <step id="license" /> -->
     </submission-process>
     <submission-process name="publication-edit">
       <step id="extractionstep" />
       <step id="publication" />
-      <step id="publication_indexing" />
-      <step id="publication_bibliographic_details" />
+      <step id="publication_complementary" />
+      <!--      <step id="publication_bibliographic_details" />-->
       <step id="publication_references" />
       <step id="upload" />
     </submission-process>
@@ -315,7 +322,7 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!--   <step id="license" /> -->
     </submission-process>
     <submission-process name="person-edit">
       <step id="person" />
@@ -326,7 +333,7 @@
       <step id="person" />
       <step id="custom-url" />
       <step id="owner" />
-      <step id="upload" />
+      <!-- <step id="upload" /> -->
     </submission-process>
     <submission-process name="event">
       <step id="collection" />
@@ -334,7 +341,7 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!-- <step id="license" />-->
     </submission-process>
     <submission-process name="event-edit">
       <step id="event" />
@@ -346,7 +353,7 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!--<step id="license" />-->
     </submission-process>
     <submission-process name="equipment-edit">
       <step id="equipment" />
@@ -361,7 +368,7 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!--    <step id="license" />-->
     </submission-process>
     <submission-process name="patent-edit">
       <step id="extractionstep" />
@@ -376,11 +383,46 @@
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
-      <step id="license" />
+      <!-- <step id="license" /> -->
     </submission-process>
     <submission-process name="funding-edit">
       <step id="funding" />
       <step id="upload" />
     </submission-process>
+
+    <submission-process name="job">
+      <step id="collection" />
+      <step id="jobstep" />
+      <step id="correction" />
+      <step id="detect-duplicate" />
+      <step id="upload" />
+      <!-- Pasos añadidos para alinearse con el flujo de otras entidades y evitar 400 en /workflowitems -->
+      <step id="itemAccessConditions" />
+      <step id="cclicense" />
+      <!-- <step id="license" /> -->
+    </submission-process>
+
+    <submission-process name="job-edit">
+      <step id="jobstep" />
+      <step id="upload" />
+    </submission-process>
+
+    <!-- Definiciones de envío para la entidad Tesis -->
+    <submission-process name="tesis">
+      <step id="collection" />
+      <step id="tesisstep" />
+      <step id="correction" />
+      <step id="detect-duplicate" />
+      <step id="upload" />
+      <step id="itemAccessConditions" />
+      <step id="cclicense" />
+      <!-- <step id="license" /> -->
+    </submission-process>
+    <submission-process name="tesis-edit">
+      <step id="tesisstep" />
+      <step id="upload" />
+    </submission-process>
   </submission-definitions>
+
+
 </item-submission>

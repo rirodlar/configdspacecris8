@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="http://purl.org/coar/version/scheme" label="Version Types">
+  <isComposedBy>
+    <node id="c_ab4af688f83e57aa" label="versión final del autor">
+      <hasNote>The version of a resource that has been accepted for publication. A second party takes permanent responsibility for the resource. Content and layout follow publisher’s submission requirements. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_b1a7d7d4d402bcce" label="versión original del autor">
+      <hasNote>Any version of a resource that is considered by the author to be of sufficient quality to be submitted for formal peer review by a second party. The author accepts full responsibility for the resource . May have a version number or date stamp. Content and layout as set out by the author. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_e19f295774971610" label="versión corregida">
+      <hasNote>A version of the Version of Record of a resource in which errors in the VoR have been corrected. The errors may be author errors, publisher errors, or other processing errors. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_dc82b40f9837b551" label="versión mejorada">
+      <hasNote>A version of the Version of Record of a resource that has been updated or enhanced by the provision of supplementary material. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_be7fb7dd8ff6fe43" label="versión desconocida">
+      <hasNote>Not Applicable (or Unknown) </hasNote>
+    </node>
+    <node id="c_fa2ee174bc00049f" label="prueba de galera">
+      <hasNote>A version of a resource that is created as part of the publication process. This includes the copy-edited manuscript, galley proofs (i.e., a typeset version that has not been made up into pages), page proofs, and revised proofs. Some of these versions may remain essentially internal process versions, but others are commonly released from the internal environment (e.g., proofs are sent to authors) and may thus become public, even though they are not authorized to be so. Content has been changed from Accepted Manuscript; layout is the publisher’s. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_71e4c1898caa6e32" label="versión sometida a revisión">
+      <hasNote>Any version of a resource that is under formal review managed by a socially recognized publishing entity. The entity recognizes its responsibility to provide objective expert review and feedback to the author, and, ultimately, to pass judgment on the fitness of the resource for publication with an “accept” or “reject” decision. May have a version number or date stamp. Content and layout follow publisher’s submission requirements. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+    <node id="c_970fb48d4fbd8a85" label="versión publicada">
+      <hasNote>A fixed version of a resource that has been made available by any organization that acts as a publisher by formally and exclusively declaring the resource “published”. This includes any “early release” resource that is formally identified as being published even before the compilation of a volume issue and assignment of associated metadata, as long as it is citable via some permanent identifier(s). This does not include any “early release” resource that has not yet been “fixed” by processes that are still to be applied, such as copy-editing, proof corrections, layout, and typesetting. (adapted from NISO-JAV, https://www.niso.org/publications/niso-rp-8-2008-jav) </hasNote>
+    </node>
+  </isComposedBy>
+</node>
+

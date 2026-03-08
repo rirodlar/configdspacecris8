@@ -19,7 +19,7 @@
 
             <Format ref="oaidc"/>
             <Format ref="mets"/>
-            <!--  <Format ref="xoai"/>-->
+            <Format ref="xoai"/>
             <Format ref="didl"/>
             <Format ref="dim"/>
             <Format ref="ore"/>

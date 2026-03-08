@@ -69,7 +69,7 @@
       <processing-class>org.dspace.app.rest.submit.step.CollectionStep</processing-class>
       <type>collection</type>
     </step-definition>
-    <step-definition id="upload" mandatory="true">
+    <step-definition id="upload" mandatory="false">
       <heading>submit.progressbar.upload</heading>
       <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
       <type>upload</type>

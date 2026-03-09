@@ -31,6 +31,7 @@
             <Format ref="uketd_dc"/>
             <Format ref="rioxx"/>
             <!--<Format ref="junii2" />-->
+            <Format ref="datacite41_openaire"/>
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
             </Description>

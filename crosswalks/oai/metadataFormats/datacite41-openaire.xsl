@@ -127,14 +127,42 @@
                     
                     
                     
-                    <!-- select all titles -->
+                    <!-- ============================================================
+                         MAPEO DE TÍTULOS → DataCite <titles>/<title>
+
+                         ANID y otros harvesters OAI-PMH esperan los títulos en el
+                         elemento DataCite <titles> con uno o más hijos <title>.
+
+                         Fuentes que se exportan (en orden de prioridad):
+
+                         (A) dc.title         → <title>                    (título principal)
+                             dc.title.*        → <title xml:lang="...">     (con idioma si lo tiene)
+                             dc.title.alternative → <title titleType="Alternative Title">
+
+                         (B) datacite.title   → <title>                    (si el ítem lo tiene
+                             (esquema datacite)    directamente en el esquema datacite, también
+                                                   se incluye aquí)
+
+                         Nota: en la mayoría de los ítems solo existe dc.title. El
+                         bloque (B) cubre casos especiales donde alguien guardó el
+                         título directamente con el prefijo "datacite".
+                         ============================================================ -->
+
+                    <!-- (A) Leer todos los valores de dc.title y sus calificadores -->
                     <xsl:variable name="title" select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']//doc:field[@name='value']"/>
-                    
-                    <xsl:if test="$title!=''">
+
+                    <!-- (B) Leer valores de datacite.title (esquema datacite, elemento title) -->
+                    <xsl:variable name="dataciteTitle" select="doc:metadata/doc:element[@name='datacite']/doc:element[@name='title']//doc:field[@name='value']"/>
+
+                    <!-- Solo generar el bloque <titles> si existe al menos un título -->
+                    <xsl:if test="$title!='' or $dataciteTitle!=''">
                         <titles>
+
+                            <!-- (A) Exportar dc.title / dc.title.alternative -->
                             <xsl:for-each select="$title">
                                 <xsl:if test=".!=''">
                                     <xsl:choose>
+                                        <!-- dc.title.alternative → titleType="Alternative Title" -->
                                         <xsl:when test="../../@name='alternative'">
                                             <xsl:choose>
                                                 <xsl:when test="../@name!='none' and ../@name!='*' and ../@name!=''">
@@ -149,14 +177,17 @@
                                                 </xsl:otherwise>
                                             </xsl:choose>
                                         </xsl:when>
-                                        
+
+                                        <!-- dc.title (sin calificador) → título principal -->
                                         <xsl:otherwise>
                                             <xsl:choose>
+                                                <!-- Con código de idioma (p.ej. dc.title[lang=es]) -->
                                                 <xsl:when test="../@name!='none' and ../@name!='*' and ../@name!=''">
                                                     <title xml:lang="{../@name}">
                                                         <xsl:value-of select="."/>
                                                     </title>
                                                 </xsl:when>
+                                                <!-- Sin código de idioma -->
                                                 <xsl:otherwise>
                                                     <title>
                                                         <xsl:value-of select="."/>
@@ -167,6 +198,16 @@
                                     </xsl:choose>
                                 </xsl:if>
                             </xsl:for-each>
+
+                            <!-- (B) Exportar datacite.title si existe y no está vacío -->
+                            <xsl:for-each select="$dataciteTitle">
+                                <xsl:if test=".!=''">
+                                    <title>
+                                        <xsl:value-of select="."/>
+                                    </title>
+                                </xsl:if>
+                            </xsl:for-each>
+
                         </titles>
                     </xsl:if>
                     

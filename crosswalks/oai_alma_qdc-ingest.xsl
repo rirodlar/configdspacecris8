@@ -63,39 +63,13 @@
         </dim:field>
       </xsl:for-each>
 
-      <!-- ── COLABORADORES (dc:contributor) ────────────────────
-           Distingue "profesor guía" del resto por texto libre   -->
+      <!-- ── COLABORADORES (dc:contributor) ──────────────────── -->
       <xsl:for-each select="//dc:contributor">
-        <xsl:choose>
-          <xsl:when test="contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'profesor') or
-                          contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'guía') or
-                          contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'guia') or
-                          contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'tutor') or
-                          contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'director')">
-            <dim:field mdschema="dc" element="contributor" qualifier="advisor">
-              <!-- Extraer solo el nombre, sin el rol -->
-              <xsl:choose>
-                <xsl:when test="contains(., ',')">
-                  <!-- Formato: "Apellido, Nombre, rol" → tomar hasta la segunda coma -->
-                  <xsl:value-of select="normalize-space(substring-before(
-                    substring-after(concat(., ','), ','), ','))"/>
-                  <xsl:if test="not(contains(substring-after(., ','), ','))">
-                    <xsl:value-of select="normalize-space(.)"/>
-                  </xsl:if>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="normalize-space(.)"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </dim:field>
-          </xsl:when>
-          <xsl:otherwise>
-            <dim:field mdschema="dc" element="contributor">
-              <xsl:value-of select="normalize-space(.)"/>
-            </dim:field>
-          </xsl:otherwise>
-        </xsl:choose>
+        <dim:field mdschema="dc" element="contributor" qualifier="advisor">
+          <xsl:value-of select="normalize-space(.)"/>
+        </dim:field>
       </xsl:for-each>
+
 
       <!-- ── FACULTAD / DEPARTAMENTO (dcterms:contributor) ──── -->
       <xsl:for-each select="//dcterms:contributor">

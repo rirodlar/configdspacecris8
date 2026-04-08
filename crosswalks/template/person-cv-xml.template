@@ -64,7 +64,7 @@
         <qualification>
             <name>@crisrp.qualification@</name>
             <start-date>@crisrp.qualification.start@</start-date>
-            <end-date>@crisrp.qualification.end@</end-date>
+            <end-date>@crisrp.qualiperfication.end@</end-date>
         </qualification>
         @group.crisrp-qualification.end@
     </qualifications>
@@ -81,6 +81,8 @@
             <authors>
                 <author>@dc.contributor.author@</author>
             </authors>
+            <journal>@dc.relation.journal@</journal>
+            <doi>@dc.identifier.doi@</doi>
         </publication>
         @relation.researchoutputs.end@
     </publications>

@@ -80,7 +80,7 @@
          Required by DSpace-CRIS: when a main form declares a group-type field,
          the backend looks up an auxiliary form named
          {mainFormName}-{schema}-{element}-{qualifier}.
-         Mirrors publication-dc-contributor-author structure. -->
+         Mirrors publication-dc-contributor-author structure. .-->
     <form name="tesisstep-dc-contributor-author">
       <row>
         <field>

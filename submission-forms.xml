@@ -75,6 +75,39 @@
         </field>
       </row>
     </form>
+
+    <!-- Auxiliary form for tesisstep -> dc.contributor.author (input-type=group).
+         Required by DSpace-CRIS: when a main form declares a group-type field,
+         the backend looks up an auxiliary form named
+         {mainFormName}-{schema}-{element}-{qualifier}.
+         Mirrors publication-dc-contributor-author structure. -->
+    <form name="tesisstep-dc-contributor-author">
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>author</dc-qualifier>
+          <label>Autor/a</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required>Debe ingresar al menos un/a autor/a.</required>
+          <hint>Nombre completo del/la estudiante que presenta la tesis, en formato Apellido, Nombre.</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>oairecerif</dc-schema>
+          <dc-element>author</dc-element>
+          <dc-qualifier>affiliation</dc-qualifier>
+          <label>Afiliación</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required />
+          <hint>Unidad académica o institución de afiliación del/la autor/a.</hint>
+        </field>
+      </row>
+    </form>
+
     <form name="publication-dc-contributor-editor">
       <row>
         <field>

@@ -178,6 +178,22 @@
                         </bean>
                     </list>
                 </entry>
+
+                <entry key="tesis">
+                    <list>
+                        <bean class="org.dspace.content.edit.EditItemMode">
+                            <property name="name" value="FULL" />
+                            <property name="security">
+                                <value type="org.dspace.content.security.CrisSecurity">
+                                    ITEM_ADMIN
+                                </value>
+                            </property>
+                            <property name="submissionDefinition" value="tesis-edit" />
+                        </bean>
+                    </list>
+                </entry>
+
+
                 <entry key="event">
                     <list>
                         <bean class="org.dspace.content.edit.EditItemMode">

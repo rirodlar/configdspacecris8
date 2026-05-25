@@ -179,6 +179,9 @@
                 <entry key="openaireFundingAgency" value-ref="openaireFundingAgency"/>
                 <entry key="eperson_claims" value-ref="eperson_claims"/>
                 <!-- Person Related items -->
+
+                <entry key="RELATION.Person.researchoutputsTesis" value-ref="relationAuthorTesisConfiguration"/>
+
                 <entry key="RELATION.Person.projects" value-ref="relationInvestigatorProjectsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputs" value-ref="relationAuthorResearchOutputsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputsProduct" value-ref="relationAuthorProductsConfiguration"/>
@@ -1397,6 +1400,61 @@
             </list>
         </property>
         <!--Default result per page  -->
+        <property name="defaultRpp" value="10" />
+        <property name="hitHighlightingConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                <property name="metadataFields">
+                    <list>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dspace.entity.type"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- tesis of an author -->
+    <bean id="relationAuthorTesisConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <property name="sidebarFacets">
+            <list>
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
+        <property name="searchFilters">
+            <list>
+                <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByResearchOutputsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultFilterQueries">
+            <list>
+                <value>(author_authority:{0} AND entityType_keyword:Tesis) AND search.resourcetype:Item</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
         <property name="defaultRpp" value="10" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">

@@ -183,7 +183,9 @@
                 <entry key="RELATION.Person.researchoutputs" value-ref="relationAuthorResearchOutputsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputsProduct" value-ref="relationAuthorProductsConfiguration"/>
                 <entry key="RELATION.Person.researchoutputsPatent" value-ref="relationAuthorResearchOutputsConfigurationPatent"/>
+              
 
+  <entry key="RELATION.Person.researchoutputsTesis" value-ref="relationAuthorTesisConfiguration"/>
 
                 <entry key="RELATION.Person.pproyectInterno" value-ref="relationPersonProjectsIntConfiguration"/>
                 <entry key="RELATION.Person.pproyectExterno" value-ref="relationPersonProjectsExtConfiguration"/>
@@ -1317,7 +1319,7 @@
         <property name="defaultFilterQueries">
             <list>
                 <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of item)-->
-                <value>projectinvestigators_authority:{0} AND search.resourcetype:Item</value>
+                <value>(author_authority:{0} AND entityType_keyword:Project) AND search.resourcetype:Item</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
@@ -1412,6 +1414,68 @@
         </property>
     </bean>
 
+
+
+
+   <!-- tesis of an author -->
+    <bean id="relationAuthorTesisConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <property name="sidebarFacets">
+            <list>
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
+        <property name="searchFilters">
+            <list>
+                <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterOrgUnit" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterType" />
+            </list>
+        </property>
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortByResearchOutputsSelection" />
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultFilterQueries">
+            <list>
+                <value>(author_authority:{0} AND entityType_keyword:Tesis) AND search.resourcetype:Item</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
+        <property name="defaultRpp" value="10" />
+        <property name="hitHighlightingConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                <property name="metadataFields">
+                    <list>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dspace.entity.type"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+
+
+
     <!-- products of an author -->
     <bean id="relationAuthorProductsConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
         <!--Which sidebar facets are to be displayed-->
@@ -1500,7 +1564,7 @@
         <property name="defaultFilterQueries">
             <list>
                 <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of Person)-->
-                <value>projectinvestigators_authority:{0} AND search.resourcetype:Item</value>
+                <value>(author_authority:{0} AND entityType_keyword:Project) AND search.resourcetype:Item</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
                 <!--Filter by specific collection-->
                 <value>location.coll:f3c9eed5-d26a-45d4-8e20-a7829e7a7f6b</value>
@@ -1540,7 +1604,7 @@
         <property name="defaultFilterQueries">
             <list>
                 <!--Only find related items. The placeholder {0} will be replaced with scope (UUID of Person)-->
-                <value>projectinvestigators_authority:{0} AND search.resourcetype:Item</value>
+                <value>(author_authority:{0} AND entityType_keyword:Project) AND search.resourcetype:Item</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
                 <!--Filter by specific collection-->
                 <value>location.coll:38ed1b32-8afe-452a-8150-8a77ae3d5081</value>

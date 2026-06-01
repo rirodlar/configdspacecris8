@@ -133,14 +133,14 @@
         </property>
     </bean>
 
-    <!-- is in collection 123456789/20 (note, list parameter map means multiple collections can be passed) -->
+    <!-- is in collection usach/20 (note, list parameter map means multiple collections can be passed) -->
     <bean id="in-outfit-collection_condition"
           class="org.dspace.content.logic.condition.InCollectionCondition">
         <property name="parameters">
             <map>
                 <entry key="collections">
                     <list>
-                        <value>123456789/20</value>
+                        <value>usach/20</value>
                     </list>
                 </entry>
             </map>
@@ -270,8 +270,8 @@
                                             <map>
                                                 <entry key="collections">
                                                     <list>
-                                                        <value>123456789/3</value>
-                                                        <value>123456789/4</value>
+                                                        <value>usach/3</value>
+                                                        <value>usach/4</value>
                                                     </list>
                                                 </entry>
                                             </map>

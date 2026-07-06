@@ -627,6 +627,13 @@
     <scope_note>Local controlled vocabulary; global vocabularies will receive specific qualifier.</scope_note>
   </dc-type>
 
+  <dc-type>
+	<schema>dc</schema>
+    <element>subject</element>
+    <qualifier>sdg</qualifier>
+    <scope_note>Objetivo de Desarrollo Sostenible (ONU) - https://metadata.un.org/sdg</scope_note>
+  </dc-type>
+
   <!-- Used by system: do not remove -->
   <dc-type>
 	<schema>dc</schema>

@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<node id="https://metadata.un.org/sdg" label="Objetivos de Desarrollo Sostenible">
+<node id="sdg" label="Objetivos de Desarrollo Sostenible">
   <isComposedBy>
-    <node id="https://metadata.un.org/sdg/1" label="1. Fin de la pobreza"/>
-    <node id="https://metadata.un.org/sdg/2" label="2. Hambre cero"/>
-    <node id="https://metadata.un.org/sdg/3" label="3. Salud y bienestar"/>
-    <node id="https://metadata.un.org/sdg/4" label="4. Educación de calidad"/>
-    <node id="https://metadata.un.org/sdg/5" label="5. Igualdad de género"/>
-    <node id="https://metadata.un.org/sdg/6" label="6. Agua limpia y saneamiento"/>
-    <node id="https://metadata.un.org/sdg/7" label="7. Energía asequible y no contaminante"/>
-    <node id="https://metadata.un.org/sdg/8" label="8. Trabajo decente y crecimiento económico"/>
-    <node id="https://metadata.un.org/sdg/9" label="9. Industria, innovación e infraestructura"/>
-    <node id="https://metadata.un.org/sdg/10" label="10. Reducción de las desigualdades"/>
-    <node id="https://metadata.un.org/sdg/11" label="11. Ciudades y comunidades sostenibles"/>
-    <node id="https://metadata.un.org/sdg/12" label="12. Producción y consumo responsables"/>
-    <node id="https://metadata.un.org/sdg/13" label="13. Acción por el clima"/>
-    <node id="https://metadata.un.org/sdg/14" label="14. Vida submarina"/>
-    <node id="https://metadata.un.org/sdg/15" label="15. Vida de ecosistemas terrestres"/>
-    <node id="https://metadata.un.org/sdg/16" label="16. Paz, justicia e instituciones sólidas"/>
-    <node id="https://metadata.un.org/sdg/17" label="17. Alianzas para lograr los objetivos"/>
+    <node id="sdg_01" label="1. Fin de la pobreza">
+      <hasNote>https://metadata.un.org/sdg/1</hasNote>
+    </node>
+    <node id="sdg_02" label="2. Hambre cero">
+      <hasNote>https://metadata.un.org/sdg/2</hasNote>
+    </node>
+    <node id="sdg_03" label="3. Salud y bienestar">
+      <hasNote>https://metadata.un.org/sdg/3</hasNote>
+    </node>
+    <node id="sdg_04" label="4. Educación de calidad">
+      <hasNote>https://metadata.un.org/sdg/4</hasNote>
+    </node>
+    <node id="sdg_05" label="5. Igualdad de género">
+      <hasNote>https://metadata.un.org/sdg/5</hasNote>
+    </node>
+    <node id="sdg_06" label="6. Agua limpia y saneamiento">
+      <hasNote>https://metadata.un.org/sdg/6</hasNote>
+    </node>
+    <node id="sdg_07" label="7. Energía asequible y no contaminante">
+      <hasNote>https://metadata.un.org/sdg/7</hasNote>
+    </node>
+    <node id="sdg_08" label="8. Trabajo decente y crecimiento económico">
+      <hasNote>https://metadata.un.org/sdg/8</hasNote>
+    </node>
+    <node id="sdg_09" label="9. Industria, innovación e infraestructura">
+      <hasNote>https://metadata.un.org/sdg/9</hasNote>
+    </node>
+    <node id="sdg_10" label="10. Reducción de las desigualdades">
+      <hasNote>https://metadata.un.org/sdg/10</hasNote>
+    </node>
+    <node id="sdg_11" label="11. Ciudades y comunidades sostenibles">
+      <hasNote>https://metadata.un.org/sdg/11</hasNote>
+    </node>
+    <node id="sdg_12" label="12. Producción y consumo responsables">
+      <hasNote>https://metadata.un.org/sdg/12</hasNote>
+    </node>
+    <node id="sdg_13" label="13. Acción por el clima">
+      <hasNote>https://metadata.un.org/sdg/13</hasNote>
+    </node>
+    <node id="sdg_14" label="14. Vida submarina">
+      <hasNote>https://metadata.un.org/sdg/14</hasNote>
+    </node>
+    <node id="sdg_15" label="15. Vida de ecosistemas terrestres">
+      <hasNote>https://metadata.un.org/sdg/15</hasNote>
+    </node>
+    <node id="sdg_16" label="16. Paz, justicia e instituciones sólidas">
+      <hasNote>https://metadata.un.org/sdg/16</hasNote>
+    </node>
+    <node id="sdg_17" label="17. Alianzas para lograr los objetivos">
+      <hasNote>https://metadata.un.org/sdg/17</hasNote>
+    </node>
   </isComposedBy>
 </node>

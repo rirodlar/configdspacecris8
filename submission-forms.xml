@@ -1840,7 +1840,7 @@
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>title</dc-element>
-          <label>Preferred Name</label>
+          <label>Nombre</label>
           <input-type>name</input-type>
           <repeatable>false</repeatable>
           <required>You must enter least at the Surname.</required>

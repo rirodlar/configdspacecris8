@@ -727,12 +727,12 @@
           <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
           <dc-qualifier>sdg</dc-qualifier>
+          <repeatable>true</repeatable>
           <label>Objetivo de Desarrollo Sostenible</label>
           <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</required>
           <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
-          <vocabulary>sdg</vocabulary>
+          <required>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</required>
+          <vocabulary closed="true">sdg</vocabulary>
         </field>
       </row>
       <!--    14-->

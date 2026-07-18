@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<node id="sdg" label="Objetivos de Desarrollo Sostenible">
+<node id="http://metadata.un.org/sdg/scheme" label="Objetivos de Desarrollo Sostenible">
   <isComposedBy>
     <node id="sdg_01" label="1. Fin de la pobreza">
       <hasNote>https://metadata.un.org/sdg/1</hasNote>

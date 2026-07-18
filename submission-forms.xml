@@ -730,9 +730,9 @@
           <label>Objetivo de Desarrollo Sostenible</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
+          <required>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</required>
           <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
-          <vocabulary closed="true">sdg</vocabulary>
+          <vocabulary>sdg</vocabulary>
         </field>
       </row>
       <!--    14-->

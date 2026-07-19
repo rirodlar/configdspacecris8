@@ -722,7 +722,7 @@
         </field>
       </row>
 
-    <!--  <row>
+      <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
@@ -733,7 +733,7 @@
           <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
           <required />
         </field>
-      </row>-->
+      </row>
       <!--    14-->
       <row>
         <field>

@@ -716,7 +716,7 @@
           <label>OECD</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required/>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso<required />
+          <required>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso</required>
           <hint />
           <vocabulary closed="true">oecd</vocabulary>
         </field>
@@ -735,19 +735,6 @@
           <vocabulary closed="true">sdg</vocabulary>
         </field>
       </row>
-      <row>
-        <field>
-          <dc-schema>dc</dc-schema>
-          <dc-element>subject</dc-element>
-          <dc-qualifier>sdg</dc-qualifier>
-          <repeatable>true</repeatable>
-          <label>Objetivo de Desarrollo Sostenible (Dropdown)</label>
-          <input-type value-pairs-name="common_sdg">dropdown</input-type>
-          <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
-          <required />
-        </field>
-      </row>
-
       <!--    14-->
       <row>
         <field>
@@ -3572,76 +3559,6 @@
       <pair>
         <displayed-value>Other</displayed-value>
         <stored-value>Other</stored-value>
-      </pair>
-    </value-pairs>
-    <value-pairs value-pairs-name="common_sdg" dc-term="common_sdg">
-      <pair>
-        <displayed-value>1. Fin de la pobreza</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/1</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>2. Hambre cero</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/2</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>3. Salud y bienestar</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/3</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>4. Educación de calidad</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/4</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>5. Igualdad de género</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/5</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>6. Agua limpia y saneamiento</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/6</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>7. Energía asequible y no contaminante</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/7</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>8. Trabajo decente y crecimiento económico</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/8</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>9. Industria, innovación e infraestructura</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/9</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>10. Reducción de las desigualdades</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/10</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>11. Ciudades y comunidades sostenibles</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/11</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>12. Producción y consumo responsables</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/12</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>13. Acción por el clima</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/13</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>14. Vida submarina</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/14</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>15. Vida de ecosistemas terrestres</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/15</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>16. Paz, justicia e instituciones sólidas</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/16</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>17. Alianzas para lograr los objetivos</displayed-value>
-        <stored-value>http://metadata.un.org/sdg/17</stored-value>
       </pair>
     </value-pairs>
     <value-pairs value-pairs-name="common_iso_languages" dc-term="common_iso_languages">

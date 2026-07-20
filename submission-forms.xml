@@ -727,6 +727,20 @@
           <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
           <dc-qualifier>sdg</dc-qualifier>
+          <label>SDG</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
+          <required/>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso<required />
+          <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
+          <vocabulary closed="true">sdg</vocabulary>
+        </field>
+      </row>
+
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>subject</dc-element>
+          <dc-qualifier>sdg</dc-qualifier>
           <repeatable>true</repeatable>
           <label>Objetivo de Desarrollo Sostenible</label>
           <input-type value-pairs-name="common_sdg">dropdown</input-type>

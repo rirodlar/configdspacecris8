@@ -13,7 +13,13 @@
     <node id="c_16ec" label="restricted access">
       <hasNote>Restricted access refers to a resource that is available in a system but with some type of restriction for full open access. This type of access can occur in a number of different situations. Some examples are described below: The user must log-in to the system in order to access the resource The user must send an email to the author or system administrator to access the resource Access to the resource is restricted to a specific community (e.g. limited to a university community) </hasNote>
     </node>
-    <node id="s_b" label="3. Salud y bienestar">
+    <node id="s_b1" label="1. Fin de la pobreza">
+      <hasNote>1. Fin de la pobreza</hasNote>
+    </node>
+    <node id="s_b2" label="2. Hambre cero">
+      <hasNote>2. Hambre cero</hasNote>
+    </node>
+    <node id="s_b3" label="3. Salud y bienestar">
       <hasNote>3. Salud y bienestar</hasNote>
     </node>
   </isComposedBy>

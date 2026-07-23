@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <node id="http://purl.org/coar/sdg/scheme" label="SDG">
   <isComposedBy>
-    <node id="c_f1cf" label="embargoed access">
-      <hasNote>Embargoed access refers to a resource that is metadata only access until released for open access on a certain date. Embargoes can be required by publishers and funders policies, or set by the author (e.g such as in the case of theses and dissertations). </hasNote>
+
+    <node id="sdg_1" label="1. Fin de la pobreza">
+      <hasNote>1. Fin de la pobreza</hasNote>
     </node>
-    <node id="c_14cb" label="metadata only access">
-      <hasNote>Metadata only access refers to a resource in which access is limited to metadata only. The resource itself is described by the metadata, but neither is directly available through the system or platform nor can be referenced to an open access copy in an external journal or trustworthy archive. </hasNote>
+    <node id="sdg_2" label="2. Hambre cero">
+      <hasNote>2. Hambre cero</hasNote>
     </node>
-    <node id="c_abf2" label="open access">
-      <hasNote>Open access refers to a resource that is immediately and permanently online, and free for all on the Web, without financial and technical barriers.The resource is either stored in the repository or referenced to an external journal or trustworthy archive. </hasNote>
-    </node>
-    <node id="c_16ec" label="restricted access">
-      <hasNote>Restricted access refers to a resource that is available in a system but with some type of restriction for full open access. This type of access can occur in a number of different situations. Some examples are described below: The user must log-in to the system in order to access the resource The user must send an email to the author or system administrator to access the resource Access to the resource is restricted to a specific community (e.g. limited to a university community) </hasNote>
-    </node>
-    <node id="s_b" label="3. Salud y bienestar">
+    <node id="sdg_3" label="3. Salud y bienestar">
       <hasNote>3. Salud y bienestar</hasNote>
+    </node>
+    <node id="sdg_4" label="4. Educación de calidad">
+      <hasNote>4. Educación de calidad</hasNote>
+    </node>
+    <node id="sdg_5" label="5. Igualdad de género">
+      <hasNote>5. Igualdad de género</hasNote>
+    </node>
+    <node id="sdg_6" label="6. Agua limpia y saneamiento">
+      <hasNote>6. Agua limpia y saneamiento</hasNote>
+    </node>
+    <node id="sdg_7" label="7. Energía asequible y no contaminante">
+      <hasNote>7. Energía asequible y no contaminante</hasNote>
+    </node>
+    <node id="sdg_8" label="8. Trabajo decente y crecimiento económico">
+      <hasNote>8. Trabajo decente y crecimiento económico</hasNote>
+    </node>
+    <node id="sdg_9" label="9. Industria, innovación e infraestructura">
+      <hasNote>9. Industria, innovación e infraestructura</hasNote>
+    </node>
+    <node id="sdg_10" label="10. Reducción de las desigualdades">
+      <hasNote>10. Reducción de las desigualdades</hasNote>
+    </node>
+    <node id="sdg_11" label="11. Ciudades y comunidades sostenibles">
+      <hasNote>11. Ciudades y comunidades sostenibles</hasNote>
+    </node>
+    <node id="sdg_12" label="12. Producción y consumo responsables">
+      <hasNote>12. Producción y consumo responsables</hasNote>
+    </node>
+    <node id="sdg_13" label="13. Acción por el clima">
+      <hasNote>13. Acción por el clima</hasNote>
+    </node>
+    <node id="sdg_14" label="14. Vida submarina">
+      <hasNote>14. Vida submarina</hasNote>
+    </node>
+    <node id="sdg_15" label="15. Vida de ecosistemas terrestres">
+      <hasNote>15. Vida de ecosistemas terrestres</hasNote>
+    </node>
+    <node id="sdg_16" label="16. Paz, justicia e instituciones sólidas">
+      <hasNote>16. Paz, justicia e instituciones sólidas</hasNote>
+    </node>
+    <node id="sdg_17" label="17. Alianzas para lograr los objetivos">
+      <hasNote>17. Alianzas para lograr los objetivos</hasNote>
     </node>
   </isComposedBy>
 </node>

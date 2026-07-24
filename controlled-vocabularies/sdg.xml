@@ -16,5 +16,20 @@
     <node id="s_b5" label="5. Igualdad de género">
       <hasNote>5. Igualdad de género</hasNote>
     </node>
+    <node id="sdg_6" label="6. Agua limpia y saneamiento">
+      <hasNote>6. Agua limpia y saneamiento</hasNote>
+    </node>
+    <node id="sdg_7" label="7. Energía asequible y no contaminante">
+      <hasNote>7. Energía asequible y no contaminante</hasNote>
+    </node>
+    <node id="sdg_8" label="8. Trabajo decente y crecimiento económico">
+      <hasNote>8. Trabajo decente y crecimiento económico</hasNote>
+    </node>
+    <node id="sdg_9" label="9. Industria, innovación e infraestructura">
+      <hasNote>9. Industria, innovación e infraestructura</hasNote>
+    </node>
+    <node id="sdg_10" label="10. Reducción de las desigualdades">
+      <hasNote>10. Reducción de las desigualdades</hasNote>
+    </node>
   </isComposedBy>
 </node>

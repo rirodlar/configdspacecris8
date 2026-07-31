@@ -716,7 +716,7 @@
           <label>OECD</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <hint>>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso</hint>
+          <hint>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso</hint>
           <vocabulary closed="true">oecd</vocabulary>
         </field>
       </row>

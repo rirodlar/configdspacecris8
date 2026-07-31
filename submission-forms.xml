@@ -731,7 +731,6 @@
           <label>SDG</label>
           <input-type>onebox</input-type>
           <hint>Seleccione el/los Objetivo(s) de Desarrollo Sostenible (ODS) relacionados con esta publicación.</hint>
-          <required>Ingresar materia, palabra clave, código de clasificación o frase clave que describe el recurso</required>
           <vocabulary closed="true">sdg</vocabulary>
         </field>
       </row>

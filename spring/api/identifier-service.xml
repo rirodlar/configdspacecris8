@@ -52,28 +52,16 @@
          the DOIIdentifierProvider or the VersionedDOIIdentifierProvider,
          depending on whether you have Item Level Versioning activated or not.
     -->
-    <!--
+    <!-- ACTIVADO (piloto TEST): usamos la variante Versioned porque
+         Item Level Versioning ya está activo (ver HandleIdentifierProvider arriba). -->
     <bean id="org.dspace.identifier.DOIIdentifierProvider"
-          class="org.dspace.identifier.DOIIdentifierProvider"
+          class="org.dspace.identifier.VersionedDOIIdentifierProvider"
           scope="singleton">
         <property name="configurationService"
-                  ref="org.dspace.services.ConfigurationService"/>
+                  ref="org.dspace.services.ConfigurationService" />
         <property name="DOIConnector"
-                  ref="org.dspace.identifier.doi.DOIConnector"/>
-        <property name="filter" ref="doi-filter" />
-            ref="org.dspace.identifier.doi.DOIConnector" />
+                  ref="org.dspace.identifier.doi.DOIConnector" />
     </bean>
-    -->
-    <!--
-    <bean id="org.dspace.identifier.DOIIdentifierProvider"
-        class="org.dspace.identifier.VersionedDOIIdentifierProvider"
-        scope="singleton">
-        <property name="configurationService"
-            ref="org.dspace.services.ConfigurationService" />
-        <property name="DOIConnector"
-            ref="org.dspace.identifier.doi.DOIConnector" />
-    </bean>
-    -->
 
     <!-- An optional logical item filter can be included in provider configuration based
     on the filters defined in item-filters.xml, eg.
@@ -100,10 +88,10 @@
          e.g. EZID is part of DataCite but provides their own APIs. The following
          DataCiteConnector won't work if EZID is your registration agency.
     -->
-    <!-- Uncomment this to use the DataCite API directly as DOIConnector.
+    <!-- ACTIVADO (piloto TEST): DataCite API directa como DOIConnector. -->
     <bean id="org.dspace.identifier.doi.DOIConnector"
-        class="org.dspace.identifier.doi.DataCiteConnector"
-        scope="singleton">
+          class="org.dspace.identifier.doi.DataCiteConnector"
+          scope="singleton">
         <property name='DATACITE_SCHEME' value='https'/>
         <property name='DATACITE_HOST' value='mds.test.datacite.org'/>
         <property name='DATACITE_DOI_PATH' value='/doi/' />
@@ -116,7 +104,6 @@
             </map>
         </property>
     </bean>
-    -->
 
     <!-- Provider to mint and register DOIs using EZID as the registrar.
     -->
@@ -162,17 +149,21 @@
     -->
 
     <!-- Namespace definition -->
-<!--    <bean id="defaultValueNamespace" class="org.dspace.identifier.generators.FixedConfigurationValueNamespaceGenerator">
+    <!-- ACTIVADO (piloto TEST): el separador viene de identifier.doi.namespaceseparator
+         en local.cfg (propuesta: "sic-"). Sin este bloque, DOIIdentifierProvider
+         recibe un Set<DoiGenerationStrategy> vacío y falla con NullPointerException
+         al intentar generar un DOI. -->
+    <bean id="defaultValueNamespace" class="org.dspace.identifier.generators.FixedConfigurationValueNamespaceGenerator">
         <property name="configurationValue" value="${identifier.doi.namespaceseparator}" />
     </bean>
 
-    &lt;!&ndash; Below there are defined the generation strategy &ndash;&gt;
+    <!-- Below there are defined the generation strategy -->
     <bean id="defaultDoiGenerationStrategy" class="org.dspace.identifier.generators.ConfigurableDoiGenerationStrategy">
-        &lt;!&ndash; Filter configured in item-filters.xml file &ndash;&gt;
+        <!-- Filter configured in item-filters.xml file -->
         <constructor-arg name="filter" ref="always_true_filter" />
         <constructor-arg name="doiNamespaceGenerator" ref="defaultValueNamespace" />
         <constructor-arg name="generationType" value="DEFAULT" />
-    </bean>-->
+    </bean>
 
     <!-- CUSTOM GENERATORS -->
     <!-- The following are some example configurations for the DOI filter generation strategies -->

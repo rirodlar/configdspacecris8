@@ -1,7 +1,5 @@
 package org.dspace.authenticate;
 
-import static org.apache.commons.lang.BooleanUtils.toBoolean;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -10,14 +8,14 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.dspace.authenticate.oidc.OidcClient;
 import org.dspace.authenticate.oidc.model.OidcTokenResponseDTO;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Item;
@@ -31,53 +29,16 @@ import org.dspace.eperson.service.GroupService;
 import org.dspace.services.factory.DSpaceServicesFactory;
 
 /**
- * Extension de OidcAuthenticationBean para el SIC (VRIIC USACH).
+ * Bean de autenticacion OIDC personalizado para el SIC USACH.
  *
- * Agrega tres comportamientos que la clase base de DSpace-CRIS 8 no provee:
+ * Extiende OidcAuthenticationBean de 4Science para:
+ *   - Persistir metadatos eperson.rut y eperson.tipo desde los claims de Keycloak.
+ *   - Sincronizar membresia de grupos en base al claim "tipo".
+ *   - Validar acceso contra la API de estamento de la DEI (fail-closed por defecto).
  *
- *  1. Persiste los claims "rut" y "tipo" (entregados por Keycloak, realm DEI)
- *     como metadata del EPerson (eperson.rut / eperson.tipo), actualizandolos
- *     en CADA login -- no solo al crear el usuario por primera vez.
- *
- *  2. Sincroniza, en cada login, la membresia REAL y PERSISTENTE (no un
- *     special group de sesion) del EPerson en el grupo de DSpace cuyo nombre
- *     coincide con el valor de "tipo" (ej: "ADMINISTRATIVO", "DEPARTAMENTAL").
- *     Si el "tipo" cambio respecto del ultimo login, se remueve la membresia
- *     del grupo anterior y se agrega al nuevo. El grupo debe existir de
- *     antemano en DSpace, salvo que se habilite
- *     authentication-oidc.tipo.autocreate-group=true.
- *
- *  3. (NUEVO, detras de un switch) Antes de permitir el login o el registro
- *     del EPerson, consulta la API de estamento de la DEI (udatos.dei.usach.cl)
- *     con el rut obtenido de Keycloak, para confirmar que la persona esta
- *     activa en la institucion. Si no lo esta (respuesta vacia), se rechaza
- *     el login. Si lo esta, se sincroniza ademas un grupo por estamento
- *     (ACADEMICO/ESTUDIANTE/ADMINISTRATIVO->FUNCIONARIOS). Este comportamiento
- *     esta controlado por authentication-oidc.estamento.enabled y, mientras
- *     este en false, el flujo se comporta exactamente igual que antes.
- *
- *     Nota importante: al ser membresia persistida (no special group), no se
- *     revoca sola si la persona deja de loguearse por OIDC -- el "limpiado"
- *     del grupo anterior solo ocurre en el momento de un login posterior con
- *     un "tipo" (o estamento) distinto.
- *
- * No se pudo extender directamente authenticateWithOidc() de la clase base
- * porque es privado, y el "code" de OIDC es de un solo uso: no se puede
- * reutilizar el que ya proceso el padre. Por eso authenticate() se
- * reimplementa completo, apoyandose en getOidcClient() (publico) para
- * repetir el intercambio code -> token -> userinfo.
- *
- * TODOs pendientes de confirmar antes de habilitar el switch en produccion
- * (ver detalle en cada metodo):
- *  - Nombre exacto del campo del token en la respuesta de /api/login (se
- *    asume "token").
- *  - Que correo va en "requestinguser" (se asume el del EPerson autenticado).
- *  - Confirmar con Rodrigo si ante una falla de la API de estamento el login
- *    debe fallar cerrado (por defecto, hoy) o abierto.
- *  - Confirmar con Rodrigo la relacion entre el grupo por "tipo" y el grupo
- *    por "estamento" (hoy usan prefijos distintos para no colisionar).
- *
- * @author VRIIC USACH
+ * Nota debug: incluye dump de userInfo tras getUserInfo() para diagnostico
+ * de claims de Keycloak (SIC-OIDC-USERINFO en logs). RUT enmascarado a los
+ * ultimos 4 digitos por privacidad. Remover o bajar a DEBUG una vez validado.
  */
 public class SicOidcAuthenticationBean extends OidcAuthenticationBean {
 
@@ -138,6 +99,17 @@ public class SicOidcAuthenticationBean extends OidcAuthenticationBean {
             return NO_SUCH_USER;
         }
 
+        // ------------------------------------------------------------------
+        // DEBUG: dump completo de claims recibidos desde Keycloak.
+        // Sirve para descubrir claims adicionales (facultad, departamento,
+        // roles, etc.) que hoy no procesamos y validar tipo Java real de
+        // cada valor (String vs List vs Map). RUT se enmascara a los
+        // ultimos 4 digitos por privacidad.
+        // Remover o bajar a DEBUG una vez validado.
+        // ------------------------------------------------------------------
+        logUserInfoClaims(userInfo);
+        // ------------------------------------------------------------------
+
         String email = getAttributeAsString(userInfo, getConfigProperty("authentication-oidc.user-info.email",
                 "email"));
         if (StringUtils.isBlank(email)) {
@@ -178,6 +150,38 @@ public class SicOidcAuthenticationBean extends OidcAuthenticationBean {
         }
 
         return registerNewEPersonWithClaims(context, ePersonService, userInfo, email, request, estamentoResult);
+    }
+
+    /**
+     * Loguea todos los claims recibidos en userInfo, uno por linea, incluyendo
+     * el tipo Java del valor para detectar claims multi-valued (List/Map) que
+     * getAttributeAsString serializaria de forma incorrecta.
+     *
+     * Enmascara el valor del RUT/RUN a los ultimos 4 digitos.
+     */
+    private void logUserInfoClaims(Map<String, Object> userInfo) {
+        if (userInfo == null) {
+            LOGGER.warn("SIC-OIDC-USERINFO userInfo is null");
+            return;
+        }
+        LOGGER.info("SIC-OIDC-USERINFO keys={}", userInfo.keySet());
+        userInfo.forEach((k, v) -> {
+            String safeValue;
+            String type;
+            if (v == null) {
+                safeValue = "null";
+                type = "null";
+            } else {
+                type = v.getClass().getSimpleName();
+                if ("rut".equalsIgnoreCase(k) || "run".equalsIgnoreCase(k)) {
+                    String s = String.valueOf(v);
+                    safeValue = s.length() > 4 ? "****" + s.substring(s.length() - 4) : "****";
+                } else {
+                    safeValue = String.valueOf(v);
+                }
+            }
+            LOGGER.info("SIC-OIDC-USERINFO   {} = [{}] (type={})", k, safeValue, type);
+        });
     }
 
     private int registerNewEPersonWithClaims(Context context, EPersonService ePersonService,

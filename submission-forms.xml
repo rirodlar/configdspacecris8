@@ -679,6 +679,7 @@
           <label>Editorial</label>
           <input-type>onebox</input-type>
           <hint>Ingresar editorial de la Revista</hint>
+          <required>La editorial es obligatoria</required>
         </field>
       </row>
       <!--    12-->

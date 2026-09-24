@@ -592,6 +592,19 @@
           <vocabulary>tipo_recurso</vocabulary>
         </field>
       </row>
+
+      <row>
+        <field>
+          <dc-schema>usach</dc-schema>
+          <dc-element>doi</dc-element>
+          <dc-qualifier>request</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>¿Solicitar DOI?</label>
+          <input-type value-pairs-name="doi_request">dropdown</input-type>
+          <hint>Elige "Sí" si esta publicación debe tener DOI (DataCite). Si ya tiene DOI de la editorial, no se generará uno nuevo.</hint>
+          <required>Indica si quieres solicitar un DOI</required>
+        </field>
+      </row>
       <!--     5-->
       <row>
         <field>
@@ -3339,7 +3352,19 @@
 
 
   </form-definitions>
+
   <form-value-pairs>
+    <value-pairs value-pairs-name="doi_request" dc-term="usach.doi.request">
+      <pair>
+        <displayed-value>Sí</displayed-value>
+        <stored-value>si</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>No</displayed-value>
+        <stored-value>no</stored-value>
+      </pair>
+    </value-pairs>
+
     <value-pairs value-pairs-name="patent_types" dc-term="patent_types">
       <pair>
         <displayed-value>Use by owner</displayed-value>

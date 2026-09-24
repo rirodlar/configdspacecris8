@@ -12,9 +12,7 @@
 	            <nameIdentifier nameIdentifierScheme="ORCID" schemeURI="http://orcid.org/">@person.identifier.orcid@</nameIdentifier>
 	            @relation.dc-contributor-author.end@
 	            @relation.oairecerif-author-affiliation.start@
-	            <affiliation
-	                affiliationIdentifier="@organization.identifier.ror@" affiliationIdentifierScheme="ROR" schemeURI="https://ror.org/"
-	            >@dc.title@</affiliation>
+	       	            <affiliation>@dc.title@</affiliation>
 	            @relation.oairecerif-author-affiliation.end@
 	            @if.not.authority.oairecerif-author-affiliation.start@
 	            <affiliation>@oairecerif.author.affiliation@</affiliation>

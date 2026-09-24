@@ -435,4 +435,53 @@
         <entry key="type-equals-dataset_condition" value-ref="type-equals-dataset_condition"/>
         <entry key="has-one-bitstream_condition" value-ref="has-one-bitstream_condition"/>
     </util:map>
+
+    <!-- ===== Solicitud de DOI desde el formulario (SIC) ===== -->
+    <bean id="doi-request_condition" class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
+        <property name="parameters">
+            <map>
+                <entry key="field" value="usach.doi.request"/>
+                <entry key="pattern" value="^si$"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="has-external-doi_condition" class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
+        <property name="parameters">
+            <map>
+                <entry key="field" value="dc.identifier.doi"/>
+                <entry key="pattern" value="^(?!.*10\.82466/).*10\.[0-9]{4,9}/"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="has-external-doi-url_condition" class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
+        <property name="parameters">
+            <map>
+                <entry key="field" value="dc.identifier.url"/>
+                <entry key="pattern" value="^(?!.*10\.82466/).*10\.[0-9]{4,9}/"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="doi-solicitado_filter" class="org.dspace.content.logic.DefaultFilter">
+        <property name="statement">
+            <bean class="org.dspace.content.logic.operator.And">
+                <property name="statements">
+                    <list>
+                        <bean class="org.dspace.content.logic.operator.Not">
+                            <property name="statements" ref="is-withdrawn_condition"/>
+                        </bean>
+                        <bean class="org.dspace.content.logic.operator.Not">
+                            <property name="statements" ref="has-external-doi_condition"/>
+                        </bean>
+                        <bean class="org.dspace.content.logic.operator.Not">
+                            <property name="statements" ref="has-external-doi-url_condition"/>
+                        </bean>
+                        <ref bean="doi-request_condition"/>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
 </beans>

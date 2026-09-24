@@ -61,6 +61,8 @@
                   ref="org.dspace.services.ConfigurationService" />
         <property name="DOIConnector"
                   ref="org.dspace.identifier.doi.DOIConnector" />
+
+        <property name="filter" ref="doi-solicitado_filter" />
     </bean>
 
     <!-- An optional logical item filter can be included in provider configuration based

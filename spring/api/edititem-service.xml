@@ -21,6 +21,16 @@
                             </property>
                             <property name="submissionDefinition" value="publication-edit" />
                         </bean>
+                        <!-- Modo DOI: solo administradores del sitio -->
+                        <bean class="org.dspace.content.edit.EditItemMode">
+                            <property name="name" value="DOI" />
+                            <property name="security">
+                                <value type="org.dspace.content.security.CrisSecurity">
+                                    ADMIN
+                                </value>
+                            </property>
+                            <property name="submissionDefinition" value="publication-doi-edit" />
+                        </bean>
                     </list>
                 </entry>
                 <entry key="person">
@@ -72,15 +82,15 @@
                         <bean class="org.dspace.content.edit.EditItemMode">
                             <property name="name" value="INVESTIGATOR" />
                             <property name="security">
-                              <value type="org.dspace.content.security.CrisSecurity">
-                                CUSTOM
-                              </value>
+                                <value type="org.dspace.content.security.CrisSecurity">
+                                    CUSTOM
+                                </value>
                             </property>
                             <property name="submissionDefinition" value="funding-edit" />
                             <property name="items">
-                            	<list>
-                            		<value>crisfund.investigators</value>
-                            	</list>
+                                <list>
+                                    <value>crisfund.investigators</value>
+                                </list>
                             </property>
                         </bean>
                     </list>
@@ -99,15 +109,15 @@
                         <bean class="org.dspace.content.edit.EditItemMode">
                             <property name="name" value="DIRECTOR" />
                             <property name="security">
-                              <value type="org.dspace.content.security.CrisSecurity">
-                                CUSTOM
-                              </value>
+                                <value type="org.dspace.content.security.CrisSecurity">
+                                    CUSTOM
+                                </value>
                             </property>
                             <property name="submissionDefinition" value="orgunit-edit" />
                             <property name="items">
-                            	<list>
-                            		<value>crisou.director</value>
-                            	</list>
+                                <list>
+                                    <value>crisou.director</value>
+                                </list>
                             </property>
                         </bean>
                     </list>
@@ -139,15 +149,15 @@
                         <bean class="org.dspace.content.edit.EditItemMode">
                             <property name="name" value="INVESTIGATOR" />
                             <property name="security">
-                              <value type="org.dspace.content.security.CrisSecurity">
-                                CUSTOM
-                              </value>
+                                <value type="org.dspace.content.security.CrisSecurity">
+                                    CUSTOM
+                                </value>
                             </property>
                             <property name="submissionDefinition" value="project-edit" />
                             <property name="items">
-                            	<list>
-                            		<value>crispj.investigator</value>
-                            	</list>
+                                <list>
+                                    <value>crispj.investigator</value>
+                                </list>
                             </property>
                         </bean>
                     </list>

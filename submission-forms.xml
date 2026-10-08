@@ -593,18 +593,6 @@
         </field>
       </row>
 
-      <row>
-        <field>
-          <dc-schema>usach</dc-schema>
-          <dc-element>doi</dc-element>
-          <dc-qualifier>request</dc-qualifier>
-          <repeatable>false</repeatable>
-          <label>¿Solicitar DOI?</label>
-          <input-type value-pairs-name="doi_request">dropdown</input-type>
-          <hint>Elige "Sí" si esta publicación debe tener DOI (DataCite). Si ya tiene DOI de la editorial, no se generará uno nuevo.</hint>
-          <required>Indica si quieres solicitar un DOI</required>
-        </field>
-      </row>
       <!--     5-->
       <row>
         <field>
@@ -3351,6 +3339,20 @@
 
 
 
+    <!-- Paso exclusivo del modo de edicion DOI (solo administradores) -->
+    <form name="publication_doi">
+      <row>
+        <field>
+          <dc-schema>usach</dc-schema>
+          <dc-element>doi</dc-element>
+          <dc-qualifier>request</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>¿Solicitar DOI?</label>
+          <input-type value-pairs-name="doi_request">dropdown</input-type>
+          <hint>Elige "Sí" si esta publicación debe tener DOI (DataCite). Si ya tiene DOI de la editorial, no se generará uno nuevo.</hint>
+        </field>
+      </row>
+    </form>
   </form-definitions>
 
   <form-value-pairs>

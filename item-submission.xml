@@ -146,6 +146,12 @@
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
+    <!-- Paso del modo de edicion DOI (solo administradores) -->
+    <step-definition id="publication_doi" mandatory="true">
+      <heading>submit.progressbar.describe.publication</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
     <step-definition id="publication_complementary" mandatory="true">
       <heading>submit.progressbar.describe.publication_complementary</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -315,6 +321,10 @@
       <step id="publication_references" />
       <step id="upload" />
     </submission-process>
+    <!-- Modo de edicion DOI (solo administradores), ver edititem-service.xml -->
+    <submission-process name="publication-doi-edit">
+      <step id="publication_doi" />
+    </submission-process>
     <submission-process name="person">
       <step id="collection" />
       <step id="person" />
@@ -409,7 +419,7 @@
 
     <!-- Definiciones de envío para la entidad Tesis -->
     <submission-process name="tesis">
-      <step id="collection" />
+      <step id="collection"    />
       <step id="tesisstep" />
       <step id="correction" />
       <step id="detect-duplicate" />

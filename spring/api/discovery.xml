@@ -1780,7 +1780,7 @@
         </property>
     </bean>
 
-    <!-- tesis authored by people affiliated to an orgunit (direct OrgUnit-Tesis relation) -->
+    <!-- tesis authored by people affiliated to an orgunit -->
     <bean id="relationOrgunitTesisConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
         <property name="searchSortConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
@@ -1793,7 +1793,8 @@
         </property>
         <property name="defaultFilterQueries">
             <list>
-                <value>relation.isOrgUnitOfTesis:{0}</value>
+                <value>'{'!join from=search.resourceid to=author_authority fromIndex=${solr.multicorePrefix}search'}'person.affiliation.name_authority:{0}</value>
+                <value>entityType_keyword:Tesis</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>

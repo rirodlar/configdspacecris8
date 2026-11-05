@@ -195,6 +195,9 @@
                 <entry key="RELATION.OrgUnit.rpprojects" value-ref="relationOrgunitRPProjectConfiguration"/>
                 <entry key="RELATION.OrgUnit.publications" value-ref="relationOrgunitPublicationsConfiguration"/>
                 <entry key="RELATION.OrgUnit.rppublications" value-ref="relationOrgunitRPPublicationsConfiguration"/>
+
+                <entry key="RELATION.OrgUnit.tesis" value-ref="relationOrgunitTesisConfiguration"/>
+
                 <entry key="RELATION.OrgUnit.people" value-ref="relationOrgunitPersonsConfiguration"/>
                 <entry key="RELATION.OrgUnit.projects" value-ref="relationOrgunitProjectsConfiguration"/>
                 <entry key="RELATION.OrgUnit.organizations" value-ref="relationOrgunitOrgunitsConfiguration"/>
@@ -1776,6 +1779,26 @@
             </list>
         </property>
     </bean>
+
+    <!-- tesis authored by people affiliated to an orgunit (direct OrgUnit-Tesis relation) -->
+    <bean id="relationOrgunitTesisConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">
+        <property name="searchSortConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
+                <property name="sortFields">
+                    <list>
+                        <ref bean="sortTitleAsc" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultFilterQueries">
+            <list>
+                <value>relation.isOrgUnitOfTesis:{0}</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
+            </list>
+        </property>
+    </bean>
+
 
     <!-- people affiliated to an orgunit -->
     <bean id="relationOrgunitPersonsConfiguration" class="org.dspace.discovery.configuration.DiscoveryRelatedItemConfiguration">

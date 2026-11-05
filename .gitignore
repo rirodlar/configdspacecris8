@@ -5,3 +5,6 @@
 
 # Opcional: no subir local.cfg si tiene secretos
 # local.cfg
+
+# Secretos reales (passwords); el template seguro es local-secrets.cfg.EXAMPLE
+local-secrets.cfg
